@@ -39,7 +39,7 @@ def query_mistral(prompt):
 
 # === TTS Player ===
 def text_to_audio(text):
-    tts = gTTS(text=text)
+    tts = gTTS(text=text, lang='en')  # Force English output
     tts.save("response.mp3")
     with open("response.mp3", "rb") as f:
         b64_audio = base64.b64encode(f.read()).decode()
@@ -51,7 +51,7 @@ def text_to_audio(text):
     st.markdown(audio_html, unsafe_allow_html=True)
 
 # === Streamlit UI ===
-st.title("🗣️ Voice Bot Interview - Powered by Mistral 7B")
+st.title("🖙️ Voice Bot Interview - Powered by Mistral 7B")
 st.markdown("Ask a behavioral interview question below.")
 
 question = st.text_input("Your Question")
