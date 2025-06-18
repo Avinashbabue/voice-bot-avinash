@@ -24,9 +24,10 @@ PREDEFINED = {
 
 # === Mistral Response Function ===
 def query_mistral(prompt):
+    full_prompt = f"[INST] You are an enthusiastic AI engineer named Avinash from Kerala. Reply in English only. {prompt} [/INST]"
     payload = {
         "model": MODEL,
-        "prompt": f"[INST] {prompt} [/INST]",
+        "prompt": full_prompt,
         "max_tokens": 256,
         "temperature": 0.7,
         "top_p": 0.9
@@ -36,6 +37,7 @@ def query_mistral(prompt):
         return res.json()['choices'][0]['text'].strip()
     else:
         return "Sorry, I couldn't generate a response."
+
 
 # === TTS Player ===
 def text_to_audio(text):
